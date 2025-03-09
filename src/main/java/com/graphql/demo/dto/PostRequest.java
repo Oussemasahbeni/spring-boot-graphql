@@ -1,4 +1,10 @@
 package com.graphql.demo.dto;
 
-public record PostRequest() {
+import java.util.UUID;
+
+public record PostRequest(
+        String title,
+        String content,
+        UUID authorId,
+        String category) {
 }

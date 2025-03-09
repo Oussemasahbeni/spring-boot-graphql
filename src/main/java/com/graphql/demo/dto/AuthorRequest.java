@@ -1,4 +1,8 @@
 package com.graphql.demo.dto;
 
-public record AuthorRequest() {
+public record AuthorRequest(
+        String name,
+        String email,
+        String bio
+) {
 }
