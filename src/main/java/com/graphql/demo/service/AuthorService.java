@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -20,6 +21,7 @@ public class AuthorService {
                 .name(request.name())
                 .email(request.email())
                 .bio(request.bio())
+                .birthDate(request.birthDate())
                 .build();
         return authorRepository.save(author);
     }
@@ -30,8 +32,38 @@ public class AuthorService {
                 .name(request.name())
                 .email(request.email())
                 .bio(request.bio())
+                .birthDate(request.birthDate())
                 .build()).toList();
 
         return authorRepository.saveAll(authors);
+    }
+
+    public List<Author> getAllAuthors() {
+        return authorRepository.findAll();
+    }
+
+    public Author getAuthorById(UUID id) {
+        return authorRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Author not found"));
+    }
+
+    public Author updateAuthor(UUID id, AuthorRequest author) {
+        Author existingAuthor = authorRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Author not found"));
+
+        existingAuthor.setName(author.name());
+        existingAuthor.setEmail(author.email());
+        existingAuthor.setBio(author.bio());
+
+        return authorRepository.save(existingAuthor);
+    }
+
+    public Boolean deleteById(UUID id) {
+        try {
+            authorRepository.deleteById(id);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 }

@@ -18,13 +18,5 @@ spring:
     graphiql:
       enabled: true
 
-springdoc:
-  api-docs:
-    path: /api-docs
-  swagger-ui:
-    path: /docs
-    operationsSorter: method
-    display-request-duration: true
-
 server:
   port: 8081

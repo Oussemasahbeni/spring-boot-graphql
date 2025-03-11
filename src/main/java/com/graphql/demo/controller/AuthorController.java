@@ -4,29 +4,50 @@ import com.graphql.demo.dto.AuthorRequest;
 import com.graphql.demo.entity.Author;
 import com.graphql.demo.service.AuthorService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.graphql.data.method.annotation.Argument;
+import org.springframework.graphql.data.method.annotation.MutationMapping;
+import org.springframework.graphql.data.method.annotation.QueryMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.stereotype.Controller;
 
 import java.util.List;
+import java.util.UUID;
 
-@RestController
+@Controller
 @RequiredArgsConstructor
-@RequestMapping("/author")
 public class AuthorController {
-
-
     private final AuthorService authorService;
 
-    @PostMapping("/create")
-    public ResponseEntity<Author> createAuthor(@RequestBody AuthorRequest author) {
-        return ResponseEntity.ok(authorService.createAuthor(author));
+    @QueryMapping
+    public List<Author> getAuthors() {
+        return authorService.getAllAuthors();
     }
 
-    @PostMapping("/batch")
-    public ResponseEntity<List<Author>> createBatch(@RequestBody List<AuthorRequest> authors) {
-        return ResponseEntity.ok(authorService.createBatch(authors));
+    @QueryMapping
+    public Author getAuthorById(@Argument UUID id) {
+        return authorService.getAuthorById(id);
+    }
+
+
+    @MutationMapping
+    public Author createAuthor(@Argument AuthorRequest author) {
+        return authorService.createAuthor(author);
+    }
+
+    @MutationMapping
+    public List<Author> createBatchAuthors(@Argument List<AuthorRequest> authors) {
+        return authorService.createBatch(authors);
+    }
+
+    @MutationMapping
+    public Author updateAuthor(@Argument UUID id, @Argument AuthorRequest author) {
+        return authorService.updateAuthor(id, author);
+    }
+
+    //    @Secured("ROLE_ADMIN")
+    @PreAuthorize("hasRole('ADMIN')")
+    @MutationMapping
+    public Boolean deleteAuthor(@Argument UUID id) {
+        return authorService.deleteById(id);
     }
 }
