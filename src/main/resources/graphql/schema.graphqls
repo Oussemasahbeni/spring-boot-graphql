@@ -8,6 +8,7 @@ type Query {
     getPosts: [Post]
     getCurrentUserPosts: [Post]
     getPostById(id: ID!): Post
+    searchPosts(search: SearchPostsRequest): [Post]
     getPostsPage(
         page: Int! = 0,
         size: Int! = 10,
@@ -52,7 +53,12 @@ type Mutation {
         Author: AuthorRequest!
     ): Author
 }
+input SearchPostsRequest {
+    title: String
+    category: String
+    content: String
 
+}
 
 type Author {
     id: ID!
@@ -62,9 +68,21 @@ type Author {
     posts(first: Int, after: String, last: Int, before: String): PostConnection
     birthDate: LocalDateTime
     createdAt: Instant!
-    updatedAt: Instant!
+    updatedAt: Instant
     version: Int!
 }
+type Post {
+    id: ID!
+    title: String!
+    category: String!
+    content: String!
+    type: PostType!
+    author: Author!
+    createdAt: Instant!
+    updatedAt: Instant
+    version: Int!
+}
+
 
 enum PostType {
     NEWS,
@@ -87,17 +105,6 @@ input AuthorRequest {
     birthDate: LocalDateTime
 }
 
-type Post {
-    id: ID!
-    title: String!
-    category: String!
-    content: String!
-    type: PostType!
-    author: Author!
-    createdAt: Instant!
-    updatedAt: Instant
-    version: Int!
-}
 
 type Page {
     content: [Post!]!
