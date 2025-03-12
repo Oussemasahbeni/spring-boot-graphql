@@ -3,8 +3,15 @@ package com.graphql.demo.service;
 
 import com.graphql.demo.dto.AuthorRequest;
 import com.graphql.demo.entity.Author;
+import com.graphql.demo.entity.Post;
 import com.graphql.demo.repository.AuthorRepository;
+import com.graphql.demo.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Limit;
+import org.springframework.data.domain.ScrollPosition;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Window;
+import org.springframework.graphql.data.query.ScrollSubrange;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +22,7 @@ import java.util.UUID;
 public class AuthorService {
 
     private final AuthorRepository authorRepository;
+    private final PostRepository postRepository;
 
     public Author createAuthor(AuthorRequest request) {
         Author author = Author.builder()
@@ -36,6 +44,13 @@ public class AuthorService {
                 .build()).toList();
 
         return authorRepository.saveAll(authors);
+    }
+
+    public Window<Post> posts(Author author, ScrollSubrange subrange) {
+        ScrollPosition position = subrange.position().orElse(ScrollPosition.offset());
+        Limit limit = Limit.of(subrange.count().orElse(10));
+        Sort sort = Sort.by("title").ascending();
+        return postRepository.findByAuthorId(author.getId(), position, limit, sort);
     }
 
     public List<Author> getAllAuthors() {

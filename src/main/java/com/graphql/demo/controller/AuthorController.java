@@ -2,11 +2,15 @@ package com.graphql.demo.controller;
 
 import com.graphql.demo.dto.AuthorRequest;
 import com.graphql.demo.entity.Author;
+import com.graphql.demo.entity.Post;
 import com.graphql.demo.service.AuthorService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Window;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
+import org.springframework.graphql.data.method.annotation.SchemaMapping;
+import org.springframework.graphql.data.query.ScrollSubrange;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 
@@ -21,6 +25,11 @@ public class AuthorController {
     @QueryMapping
     public List<Author> getAuthors() {
         return authorService.getAllAuthors();
+    }
+
+    @SchemaMapping
+    public Window<Post> posts(Author author, ScrollSubrange subrange) {
+        return this.authorService.posts(author, subrange);
     }
 
     @QueryMapping

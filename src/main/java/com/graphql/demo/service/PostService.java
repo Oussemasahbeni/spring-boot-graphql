@@ -52,6 +52,7 @@ public class PostService {
                         .category(request.category())
                         .content(request.content())
                         .author(author)
+                        .type(request.type())
                         .build())
                 .toList();
         return postRepository.saveAll(posts);

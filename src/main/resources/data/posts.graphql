@@ -1,0 +1,190 @@
+mutation CreateBatchPosts {
+    createBatchPosts(
+        posts: [
+            {
+                title: "GraphQL Basics"
+                category: "Technology"
+                content: "An introduction to GraphQL and its benefits."
+                type: "ARTICLE"
+                authorId: "d27f3b2c-f071-4189-8f7e-9eb8b5c584e6"
+            },
+            {
+                title: "Advanced GraphQL Queries"
+                category: "Technology"
+                content: "Deep dive into GraphQL queries, mutations, and subscriptions."
+                type: "ARTICLE"
+                authorId: "d27f3b2c-f071-4189-8f7e-9eb8b5c584e6"
+            },
+            {
+                title: "GraphQL vs REST"
+                category: "Technology"
+                content: "Comparing GraphQL and REST APIs."
+                type: "ARTICLE"
+                authorId: "d27f3b2c-f071-4189-8f7e-9eb8b5c584e6"
+            },
+            {
+                title: "Best Practices for GraphQL"
+                category: "Technology"
+                content: "Optimizing GraphQL schemas and queries for performance."
+                type: "ARTICLE"
+                authorId: "d27f3b2c-f071-4189-8f7e-9eb8b5c584e6"
+            },
+            {
+                title: "GraphQL Error Handling"
+                category: "Technology"
+                content: "Strategies for handling errors in GraphQL applications."
+                type: "ARTICLE"
+                authorId: "d27f3b2c-f071-4189-8f7e-9eb8b5c584e6"
+            },
+            {
+                title: "Building APIs with GraphQL"
+                category: "Technology"
+                content: "How to design and build APIs using GraphQL."
+                type: "ARTICLE"
+                authorId: "d27f3b2c-f071-4189-8f7e-9eb8b5c584e6"
+            },
+            {
+                title: "Introduction to GraphQL Subscriptions"
+                category: "Technology"
+                content: "Understanding real-time data fetching in GraphQL."
+                type: "ARTICLE"
+                authorId: "d27f3b2c-f071-4189-8f7e-9eb8b5c584e6"
+            },
+            {
+                title: "GraphQL Authentication & Authorization"
+                category: "Security"
+                content: "Securing GraphQL APIs with authentication and authorization."
+                type: "ARTICLE"
+                authorId: "d27f3b2c-f071-4189-8f7e-9eb8b5c584e6"
+            },
+            {
+                title: "GraphQL Pagination Techniques"
+                category: "Technology"
+                content: "Different ways to implement pagination in GraphQL."
+                type: "ARTICLE"
+                authorId: "d27f3b2c-f071-4189-8f7e-9eb8b5c584e6"
+            },
+            {
+                title: "GraphQL Caching Strategies"
+                category: "Technology"
+                content: "Improving performance with caching in GraphQL."
+                type: "ARTICLE"
+                authorId: "d27f3b2c-f071-4189-8f7e-9eb8b5c584e6"
+            },
+            {
+                title: "GraphQL vs gRPC"
+                category: "Technology"
+                content: "Comparing GraphQL and gRPC for API development."
+                type: "ARTICLE"
+                authorId: "d27f3b2c-f071-4189-8f7e-9eb8b5c584e6"
+            },
+            {
+                title: "GraphQL with React"
+                category: "Frontend Development"
+                content: "Using GraphQL in React applications with Apollo Client."
+                type: "ARTICLE"
+                authorId: "d27f3b2c-f071-4189-8f7e-9eb8b5c584e6"
+            },
+            {
+                title: "GraphQL with Angular"
+                category: "Frontend Development"
+                content: "Integrating GraphQL with Angular using Apollo Angular."
+                type: "ARTICLE"
+                authorId: "d27f3b2c-f071-4189-8f7e-9eb8b5c584e6"
+            },
+            {
+                title: "GraphQL in Microservices"
+                category: "Architecture"
+                content: "How GraphQL fits into a microservices architecture."
+                type: "ARTICLE"
+                authorId: "d27f3b2c-f071-4189-8f7e-9eb8b5c584e6"
+            },
+            {
+                title: "GraphQL Schema Design"
+                category: "Technology"
+                content: "Best practices for designing scalable GraphQL schemas."
+                type: "ARTICLE"
+                authorId: "d27f3b2c-f071-4189-8f7e-9eb8b5c584e6"
+            },
+            {
+                title: "GraphQL Performance Optimization"
+                category: "Technology"
+                content: "Techniques to improve GraphQL query performance."
+                type: "ARTICLE"
+                authorId: "d27f3b2c-f071-4189-8f7e-9eb8b5c584e6"
+            },
+            {
+                title: "GraphQL Federation"
+                category: "Technology"
+                content: "Breaking monolithic GraphQL APIs into federated services."
+                type: "ARTICLE"
+                authorId: "d27f3b2c-f071-4189-8f7e-9eb8b5c584e6"
+            },
+            {
+                title: "GraphQL with TypeScript"
+                category: "Technology"
+                content: "Leveraging TypeScript for strongly typed GraphQL APIs."
+                type: "ARTICLE"
+                authorId: "d27f3b2c-f071-4189-8f7e-9eb8b5c584e6"
+            },
+            {
+                title: "GraphQL with NestJS"
+                category: "Backend Development"
+                content: "Using GraphQL in NestJS applications."
+                type: "ARTICLE"
+                authorId: "d27f3b2c-f071-4189-8f7e-9eb8b5c584e6"
+            },
+            {
+                title: "GraphQL with Spring Boot"
+                category: "Backend Development"
+                content: "Building GraphQL APIs with Spring Boot."
+                type: "ARTICLE"
+                authorId: "d27f3b2c-f071-4189-8f7e-9eb8b5c584e6"
+            },
+            {
+                title: "GraphQL with Django"
+                category: "Backend Development"
+                content: "Using GraphQL in Django with Graphene."
+                type: "ARTICLE"
+                authorId: "d27f3b2c-f071-4189-8f7e-9eb8b5c584e6"
+            },
+            {
+                title: "GraphQL Testing Strategies"
+                category: "Technology"
+                content: "Unit and integration testing GraphQL APIs."
+                type: "ARTICLE"
+                authorId: "d27f3b2c-f071-4189-8f7e-9eb8b5c584e6"
+            },
+            {
+                title: "GraphQL Monitoring & Logging"
+                category: "Technology"
+                content: "Best practices for monitoring and logging GraphQL queries."
+                type: "ARTICLE"
+                authorId: "d27f3b2c-f071-4189-8f7e-9eb8b5c584e6"
+            },
+            {
+                title: "GraphQL API Security"
+                category: "Security"
+                content: "Securing GraphQL endpoints from common vulnerabilities."
+                type: "ARTICLE"
+                authorId: "d27f3b2c-f071-4189-8f7e-9eb8b5c584e6"
+            },
+            {
+                title: "GraphQL with Serverless"
+                category: "Cloud"
+                content: "Deploying GraphQL APIs in a serverless environment."
+                type: "ARTICLE"
+                authorId: "d27f3b2c-f071-4189-8f7e-9eb8b5c584e6"
+            }
+        ]
+    ) {
+        id
+        title
+        category
+        content
+        type
+        createdAt
+        updatedAt
+        version
+    }
+}
